@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="mitv" class="com.spring.second.MiTv">
+		<constructor-arg ref="appleSpeaker"></constructor-arg>
+		<property name="speaker" ref="appleSpeaker"></property>
+
+	</bean>
+	
+	<bean id="appleSpeaker" class="com.spring.second.AppleSpeaker">
+		<constructor-arg value="30"></constructor-arg>
+	</bean>
+</beans>
