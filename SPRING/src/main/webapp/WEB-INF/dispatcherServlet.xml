@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <mvc:annotation-driven/> <!--mvc 패턴을 쓰고 싶으면 꼭 줘야 한다.-->
+    <context:annotation-config/> <!--어노테이션 활성화 멤버필드, 메소드-->
+
+    <!-- 클래스 어노테이션 허용, 시작패키지 설정-->
+    <context:component-scan base-package="com.koreait.first" />
+
+    <!--사용할 파일명을 완성시켜주는 객체-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+
+</beans>
