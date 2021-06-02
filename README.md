@@ -25,5 +25,5 @@ UserEntity.java
 UserMapper.interface
 UserMapper.xml
 
-join.jsp
+
 
