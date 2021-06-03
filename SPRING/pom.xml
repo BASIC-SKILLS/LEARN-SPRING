@@ -82,6 +82,14 @@
             <version>${spring-version}</version>
         </dependency>
 
+        <!--jbcrypt가 자바용, bcrypt는 다른 언어용-->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>
