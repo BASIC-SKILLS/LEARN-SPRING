@@ -7,7 +7,17 @@
         SELECT B.iboard, B.title, B.iuser, B.regdt, U.unm AS writeNm, U.profileImg
         FROM t_board B
         INNER JOIN t_user U
-        WHERE B.iuser = U.iuser
+        ON B.iuser = U.iuser
         ORDER BY B.iboard DESC
+    </select>
+
+    <!--select 안에 Vo 멤버필드와 이름이 같아야 한다 그래야지 값을 가져와서 넣어준다 다르다면 alias를 써야한다 -->
+
+    <select id="selBoard" resultType="com.koreait.first.board.BoardDomain">
+        SELECT B.iboard, B.title, B.ctnt , B.iuser, B.regdt, U.unm AS writeNm, U.profileImg
+        FROM t_board B
+        INNER JOIN t_user U
+        ON B.iuser = U.iuser
+        WHERE B.iboard = #{iboard}
     </select>
 </mapper>

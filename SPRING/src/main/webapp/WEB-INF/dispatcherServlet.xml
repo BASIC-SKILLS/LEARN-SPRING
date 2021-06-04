@@ -29,7 +29,8 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-
+    <!--pom.xml에서 라이브러리 설치하고 여기서 bean등록을 해야지 쓸 수 있다-->
+    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
 
 
 

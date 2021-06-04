@@ -1,14 +1,20 @@
 package com.koreait.first.user;
 
+import com.mysql.cj.Session;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpSession;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserMapper mapper;
+
+    @Autowired
+    private HttpSession session;
 
     public int join(UserEntity param) {
         String cryptPw = BCrypt.hashpw(param.getUpw(), BCrypt.gensalt());
@@ -22,6 +28,8 @@ public class UserService {
         if (result==null) {
             return "/user/join?err=1";
         } else if (BCrypt.checkpw(param.getUpw(), result.getUpw())) {
+            result.setUpw(null);
+            session.setAttribute("loginUser", result);
             return "/board/list";
         } else {
             return "/user/login?err=1";

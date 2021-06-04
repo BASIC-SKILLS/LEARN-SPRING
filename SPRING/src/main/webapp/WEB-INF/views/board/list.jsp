@@ -5,9 +5,18 @@
     <meta charset="UTF-8">
 
     <title>LIST</title>
+
+    <link href="/res/css/boardList.css" rel="stylesheet" />
+    <link href="/res/css/common.css" rel="stylesheet" />
+    <script defer src="/res/js/boardList.js"></script>
 </head>
 <body>
     <h2>LIST</h2>
+
+    <div>로그인 아이디 :
+        <c:if test="${empty sessionScope.loginUser}"><span>없어요.</span></c:if>
+        ${sessionScope.loginUser.uid}
+    </div>
 
     <table>
         <tr>
