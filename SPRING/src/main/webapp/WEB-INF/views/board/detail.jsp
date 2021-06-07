@@ -6,7 +6,7 @@
     <title>DETAIL</title>
 
     <link rel="stylesheet" href="/res/css/boardDetail.css">
-    <script src="/res/js/boardDetail.js"></script>
+    <script defer src="/res/js/boardDetail.js"></script>
 </head>
 <body>
 

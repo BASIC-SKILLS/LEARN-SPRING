@@ -18,10 +18,15 @@ function regCmt() {
 function regAjax(param) {
     const init = {
         method: 'POST',
-        body: JSON.stringify(param)
+        body: JSON.stringify(param),
+        headers:{
+            'accept' : 'application/json',
+            'content-type' : 'application/json;charset=UTF-8'
+        }
+
     };
 
-    fetch('cmtInsSel', init)
+    fetch('cmtIns', init)
         .then(function(res) {
             return res.json();
         })
@@ -45,7 +50,7 @@ function regAjax(param) {
 function getListAjax() {
     var iboard = cmtListElem.dataset.iboard;
 
-    fetch('cmtInsSel?iboard=' + iboard)
+    fetch('cmtSel?iboard=' + iboard)
         .then(function(res) {
             return res.json();
         })
@@ -82,6 +87,8 @@ function makeCmtElemList(data) {
 
     var loginUserPk = cmtListElem.dataset.loginUserPk;
 
+    //data의 length만큼 function을 반복해주는데 function에 data의 배열들을 순서대로 function의 인자로 넣어준다 하나하나 순서대로
+    //그게 foreach문 이었잖아~~~~용~~~
     data.forEach(function(item) {
         var trElemCtnt = document.createElement('tr');
         var tdElem1 = document.createElement('td');
@@ -90,7 +97,7 @@ function makeCmtElemList(data) {
         var tdElem4 = document.createElement('td');
 
         tdElem1.append(item.cmt);
-        tdElem2.append(item.writerNm);
+        tdElem2.append(item.writeNm);
         tdElem3.append(item.regdate);
 
         if(parseInt(loginUserPk) === item.iuser) {
@@ -186,4 +193,4 @@ function closeModModal() {
     cmtModModalElem.className = 'displayNone';
 }
 
-//getListAjax(); //이 파일이 임포트되면 함수 1회 호출!
+getListAjax(); //이 파일이 임포트되면 함수 1회 호출!
