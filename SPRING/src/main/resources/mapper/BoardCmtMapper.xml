@@ -22,4 +22,16 @@
         WHERE C.iboard = #{iboard}
         ORDER BY C.icmt DESC;
     </select>
+
+    <update id="updBoardCmt">
+        UPDATE t_board_cmt
+        SET cmt = #{cmt}
+        WHERE icmt = #{icmt} AND iuser=#{iuser}
+    </update>
+
+    <delete id="delBoardCmt">
+        DELETE FROM t_board_cmt
+        WHERE icmt = #{icmt} AND iuser = #{iuser}
+    </delete>
+
 </mapper>

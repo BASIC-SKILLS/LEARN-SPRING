@@ -13,3 +13,12 @@ section { padding-left: 40px; padding-right: 40px;}
 
 .colorRed { color: red; }
 .displayNone { display: none !important; }
+
+/*화면에서 나타나지 않게 한당
+종류 1. display:none; - 아예 안보이고 공간도 차지 안한다.
+종류 2. visibility:hidden; - 안보이는데 공간은 차지 한다.
+
+!important
+css는 우선순위 싸움이당 - 자꾸 덮히니까
+우선순위 0순위로 만들어준당
+*/

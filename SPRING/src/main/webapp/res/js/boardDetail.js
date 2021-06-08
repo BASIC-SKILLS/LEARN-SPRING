@@ -17,7 +17,7 @@ function regCmt() {
 //서버에게 등록해줘~~~
 function regAjax(param) {
     const init = {
-        method: 'POST',
+        method: 'POST', //post는 insert
         body: JSON.stringify(param),
         headers:{
             'accept' : 'application/json',
@@ -26,7 +26,7 @@ function regAjax(param) {
 
     };
 
-    fetch('cmtIns', init)
+    fetch('cmt', init)
         .then(function(res) {
             return res.json();
         })
@@ -50,11 +50,11 @@ function regAjax(param) {
 function getListAjax() {
     var iboard = cmtListElem.dataset.iboard;
 
-    fetch('cmtSel?iboard=' + iboard)
+    fetch('cmt/' + iboard)
         .then(function(res) {
             return res.json();
         })
-        .then(function(myJson) {
+        .then(function(myJson) {  //get/iboard 지만 detail이 아니라 list
             console.log(myJson);
 
             makeCmtElemList(myJson);
@@ -134,7 +134,7 @@ function makeCmtElemList(data) {
 }
 
 function delAjax(icmt) {
-    fetch('cmtDelUpd?icmt=' + icmt)
+    fetch('cmt/'+icmt,{method:'DELETE'})
         .then(function(res) {
             return res.json();
         })
@@ -156,15 +156,19 @@ function modAjax() {
     var cmtModFrmElem = document.querySelector('#cmtModFrm');
     var param = {
         icmt: cmtModFrmElem.icmt.value,
-        cmt: cmtModFrmElem.cmt.value
+        cmt: cmtModFrmElem.newCmt.value
     }
 
     const init = {
-        method: 'POST',
-        body: new URLSearchParams(param)
+        method: 'PUT',
+        body: JSON.stringify(param),
+        headers:{
+            'accept' : 'application/json',
+            'content-type' : 'application/json;charset=UTF-8'
+        }  //모든요청은 body와 headers가 있다. JASON을 쓸 때는 body와 headers를 이렇게 설정해주고, 서버에서는 @RequestBody로 받아준당
     };
 
-    fetch('cmtDelUpd', init)
+    fetch('cmt', init)
         .then(function(res) {
             return res.json();
         })
@@ -186,7 +190,7 @@ function openModModal({icmt, cmt}) {
 
     var cmtModFrmElem = document.querySelector('#cmtModFrm');
     cmtModFrmElem.icmt.value = icmt;
-    cmtModFrmElem.cmt.value = cmt;
+    cmtModFrmElem.newCmt.value = cmt;
 }
 
 function closeModModal() {

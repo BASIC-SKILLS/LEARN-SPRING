@@ -6,6 +6,7 @@
     <title>DETAIL</title>
 
     <link rel="stylesheet" href="/res/css/boardDetail.css">
+    <link rel="stylesheet" href="/res/css/common.css">  <!--import 순서 때문에 css가 적용 안될 수도 있다 -->
     <script defer src="/res/js/boardDetail.js"></script>
 </head>
 <body>
@@ -30,6 +31,18 @@
     <!--data-set속성 data로 시작하는 애들한테 접근할 수 있어요(data-이름, data-이름-이름 이렇게 하면 js에서 이름이름 이렇게 가져오면 된대요, data-login-user-pk -> loginUserPk)을 이용하여서 div속성에 값을 넣어둬요. js에서 쓸려구요.-->
     <!--html은 순서와 배열이 없고 key value 밖에없당-->
     <div id="cmtList" data-login-user-pk="${sessionScope.loginUser.iuser}" data-iboard="${param.iboard}"></div>
+
+
+    <div id="modal" class="displayNone">
+        <div class="modal_content">
+            <form id="cmtModFrm" action="#">
+                <input type="hidden" id="icmt">
+                <input type="text" id="newCmt">  <!--id는 문서에서 유일해야 한다-->
+            </form>
+            <input type="button" value="댓글 수정" onclick="modAjax();">
+            <input type="button" value="취소" onclick="closeModModal();">
+        </div>
+    </div>
 
 </div>
 </body>

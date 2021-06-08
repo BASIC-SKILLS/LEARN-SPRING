@@ -13,9 +13,11 @@
 <body>
     <h2>LIST</h2>
 
-    <div>로그인 아이디 :
+    <div>
+        <span>로그인 아이디 :
         <c:if test="${empty sessionScope.loginUser}"><span>없어요.</span></c:if>
-        ${sessionScope.loginUser.uid}
+            ${sessionScope.loginUser.uid} </span>
+        <span><a href="/user/profile">프로필</a></span>
     </div>
 
     <table>
@@ -44,7 +46,7 @@
                         <c:set var="img" value="/res/img/noprofile.jpg"/>
                     </c:when>
                     <c:otherwise>
-                        <c:set var="img" value="/res/img/user/${item.iuser}/${item.profileImg}"/>
+                        <c:set var="img" value="/img/${item.iuser}/${item.profileImg}"/>
                     </c:otherwise>
                 </c:choose>
                 <td>

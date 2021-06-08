@@ -3,9 +3,8 @@ package com.koreait.first.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/user")
@@ -44,5 +43,17 @@ public class UserController {
         System.out.println("param = " + param);
         service.join(param);
         return "redirect: /user/login";
+    }
+
+    @RequestMapping("/profile")
+    public String profile() {
+        return "user/profile";
+    }
+
+    //@RequestMapping(value = "/profile", method = RequestMethod.POST)
+    //@GetMapping, @PostMapping, @DeleteMapping, @PutMapping
+    @PostMapping("/profile") //여러 개 이면 MultipartFile[]이다
+    public String profile(@RequestParam("profileImg") MultipartFile img) {
+        return "redirect:"+service.uploadProfile(img);
     }
 }
