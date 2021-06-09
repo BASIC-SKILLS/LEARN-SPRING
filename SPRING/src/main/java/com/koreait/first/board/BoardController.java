@@ -76,6 +76,15 @@ public class BoardController {
         data.put("result", result);
         return data;
     }
+
+    @GetMapping("/write")
+    public void write() {}
+
+    @PostMapping("/write")
+    public String write(BoardEntity param) {
+        int iboard = service.write(param);
+        return "redirect:detail?iboard=" + iboard;
+    }
 }
 
 //bean등록이 되면 싱글톤이 된당 <- lombok은 bean등록 아니다 . 그래서 어노테이션이 꼭 싱글톤으로 객체 만들어주는 것은 아니다

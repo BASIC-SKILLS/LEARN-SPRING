@@ -1,15 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>DETAIL</title>
 
-    <link rel="stylesheet" href="/res/css/boardDetail.css">
-    <link rel="stylesheet" href="/res/css/common.css">  <!--import 순서 때문에 css가 적용 안될 수도 있다 -->
-    <script defer src="/res/js/boardDetail.js"></script>
-</head>
-<body>
 
     <div><a href="#" onclick="goBack();">돌아가기</a></div>
     
@@ -44,6 +35,3 @@
         </div>
     </div>
 
-</div>
-</body>
-</html>

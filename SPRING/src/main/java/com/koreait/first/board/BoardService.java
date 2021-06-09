@@ -32,8 +32,6 @@ public class BoardService {
 
     public List<BoardCmtDomain> selBoardCmtList(BoardCmtEntity param) {
         List<BoardCmtDomain> list = cmtMapper.selBoardCmtList(param);
-
-
         return list;
     }
 
@@ -47,5 +45,15 @@ public class BoardService {
         UserEntity loginUser = (UserEntity) session.getAttribute("loginUser");
         param.setIuser(loginUser.getIuser());
         return cmtMapper.delBoardCmt(param);
+    }
+
+    public int write(BoardEntity param) {
+        UserEntity loginUser = (UserEntity) session.getAttribute("loginUser");
+        param.setIuser(loginUser.getIuser());
+
+        if(param.getIboard()==0) {
+            return 0;
+        }
+        return 0;
     }
 }

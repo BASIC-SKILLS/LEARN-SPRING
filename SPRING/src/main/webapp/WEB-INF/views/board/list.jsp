@@ -1,16 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <meta charset="UTF-8">
 
-    <title>LIST</title>
-
-    <link href="/res/css/boardList.css" rel="stylesheet" />
-    <link href="/res/css/common.css" rel="stylesheet" />
-    <script defer src="/res/js/boardList.js"></script>
-</head>
-<body>
     <h2>LIST</h2>
 
     <div>
@@ -64,5 +54,3 @@
             </tr>
         </c:forEach>
     </table>
-</body>
-</html>
