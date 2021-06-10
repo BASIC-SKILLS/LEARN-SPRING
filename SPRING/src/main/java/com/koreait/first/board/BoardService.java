@@ -1,5 +1,6 @@
 package com.koreait.first.board;
 
+import com.koreait.first.MyUtils;
 import com.koreait.first.user.UserEntity;
 import com.mysql.cj.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class BoardService {
 
     @Autowired
     private HttpSession session;
+
+    @Autowired
+    private MyUtils myUtils;
 
     public List<BoardDomain> selBoardList() { return mapper.selBoardList(); }
 
@@ -48,12 +52,13 @@ public class BoardService {
     }
 
     public int write(BoardEntity param) {
-        UserEntity loginUser = (UserEntity) session.getAttribute("loginUser");
-        param.setIuser(loginUser.getIuser());
+        param.setIuser(myUtils.getLoginUserPk()); //iboard, title, ctnt, iuser
 
-        if(param.getIboard()==0) {
-            return 0;
+        if(param.getIboard()==0) { //등록 - ins Mapper
+            mapper.insBoard(param);
+        } else {  //수정  - upd Mapper
+            mapper.updBoard(param);
         }
-        return 0;
+        return param.getIboard();
     }
 }

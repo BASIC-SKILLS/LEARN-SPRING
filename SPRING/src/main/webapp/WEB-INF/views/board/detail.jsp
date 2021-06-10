@@ -3,6 +3,13 @@
 
 
     <div><a href="#" onclick="goBack();">돌아가기</a></div>
+
+    <c:if test="${sessionScope.loginUser.iuser eq data.iuser}">
+        <div>
+            <a href="write?iboard=${param.iboard}">수정</a>
+            <a href="del">삭제</a>
+        </div>
+    </c:if>
     
     <h1>${requestScope.data.title}</h1>
     <div>글번호 : ${requestScope.data.iboard}</div>
